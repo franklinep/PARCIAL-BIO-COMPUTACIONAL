@@ -1,0 +1,31 @@
+speech.md
+
+# Archivos auxiliares de LaTeX
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.idx
+*.ind
+*.ilg
+*.nav
+*.snm
+*.vrb
+*.bcf
+*.run.xml
+*.dvi
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+.env/
+__pycache__/
+*.pyc
