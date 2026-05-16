@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(Copy-Item code/figures/benchmark.png informe/benchmark.png -Force)",
+      "Bash(Copy-Item code/figures/benchmark.png slides/benchmark.png -Force)",
+      "Bash(Get-Item informe/benchmark.png,slides/benchmark.png,code/figures/benchmark.png)",
+      "Bash(Select-Object FullName,Length)",
+      "PowerShell(python -c \"import sys; print\\(sys.executable\\); import numpy; print\\('numpy OK', numpy.__version__\\)\" 2>&1)",
+      "PowerShell(if \\(Test-Path \".venv\"\\) { Get-ChildItem .venv } else { Write-Output \"no .venv\" }; Write-Output \"---\"; Get-ChildItem -Directory | Where-Object { $_.Name -match \"venv|env\" } | Select-Object FullName)",
+      "PowerShell(python -m pip install --quiet biopython==1.84 matplotlib==3.9.2 memory-profiler==0.61.0 numpy==2.1.3 scipy==1.14.1 2>&1)",
+      "PowerShell(python -m pip install --quiet biopython matplotlib memory-profiler numpy scipy 2>&1)",
+      "PowerShell(python -c \"import numpy,scipy,matplotlib,Bio; print\\('numpy',numpy.__version__\\); print\\('scipy',scipy.__version__\\); print\\('matplotlib',matplotlib.__version__\\); print\\('biopython',Bio.__version__\\)\")",
+      "Bash(until [ -s \"/c/Users/frank/AppData/Local/Temp/claude/c--fespa-uni-Computacional-PARCIAL-BIO-COMPUTACIONAL/9f2d4e01-4ce2-431d-ae3f-d6a09c542b65/tasks/bk00w241x.output\" ] && tail -1 \"/c/Users/frank/AppData/Local/Temp/claude/c--fespa-uni-Computacional-PARCIAL-BIO-COMPUTACIONAL/9f2d4e01-4ce2-431d-ae3f-d6a09c542b65/tasks/bk00w241x.output\" | grep -q \"\\\\-\\\\-\\\\-\\\\|alignments returned\\\\|Error\\\\|Traceback\"; do sleep 10; done; echo \"DONE\")",
+      "Read(//c/Users/frank/AppData/Local/Temp/claude/c--fespa-uni-Computacional-PARCIAL-BIO-COMPUTACIONAL/9f2d4e01-4ce2-431d-ae3f-d6a09c542b65/tasks/**)",
+      "PowerShell(python main_p2.py 2>&1)",
+      "PowerShell(Write-Output \\(\"cwd=\" + \\(Get-Location\\).Path\\); Get-ChildItem output/ | Sort-Object LastWriteTime -Descending | Select-Object Name,LastWriteTime,Length | Format-Table -AutoSize)",
+      "PowerShell(python -u main_p2.py 2>&1 | Out-File output/_main_p2_log.txt -Encoding utf8; Write-Output \"exit=$LASTEXITCODE\"; Get-Content output/_main_p2_log.txt | Select-Object -Last 60)",
+      "PowerShell(python -u main_p2.py 2>&1 | Out-File output/_main_p2_log.txt -Encoding utf8; Write-Output \"exit=$LASTEXITCODE\"; Get-Content output/_main_p2_log.txt | Select-Object -Last 40)",
+      "PowerShell(Set-Location ../informe; pdflatex -interaction=nonstopmode informe.tex 2>&1 | Out-File _build.log -Encoding utf8; pdflatex -interaction=nonstopmode informe.tex 2>&1 | Out-File _build.log -Encoding utf8 -Append; Get-Content _build.log | Select-String -Pattern \"Error|Warning|Overfull|! |No file\" | Select-Object -First 30; Write-Output \"---\"; Write-Output \\(\"PDF: \" + \\(Test-Path informe.pdf\\) + \" size=\" + \\(Get-Item informe.pdf -ErrorAction SilentlyContinue\\).Length\\))",
+      "PowerShell(pdflatex --version 2>&1)",
+      "PowerShell(initexmf --set-config-value=[MPM]AutoInstall=1 2>&1)",
+      "PowerShell(pdflatex -interaction=nonstopmode informe.tex 2>&1)",
+      "PowerShell(mpm --admin --install=geometry 2>&1)",
+      "PowerShell(mpm --install=geometry 2>&1)",
+      "PowerShell(mpm --verbose --install=geometry 2>&1)",
+      "PowerShell($env:PATH = \\($env:PATH -split ';' | Where-Object { $_ -notmatch 'fnm\\\\.exe' -and $_ -ne '' }\\) -join ';'; mpm --install geometry 2>&1 | Select-Object -Last 10)",
+      "PowerShell($env:PATH = \\($env:PATH -split ';' | Where-Object { $_ -notmatch '\\\\.exe$' -and $_ -ne '' }\\) -join ';'; mpm --install geometry 2>&1 | Select-Object -Last 10)",
+      "PowerShell($env:PATH = \\($env:PATH -split ';' | Where-Object { $_ -notmatch '\\\\.exe$' -and $_ -ne '' }\\) -join ';'; latexmk -pdf -interaction=nonstopmode informe.tex 2>&1 | Select-Object -Last 20)"
+    ]
+  }
+}

@@ -107,12 +107,12 @@ Hirschberg   & 260 & 320 & 90.6\,\% \\
 $L$ & $t_{\text{NW}}$ & $\Delta m_{\text{NW}}$ & $\Delta m_{\text{HB}}$ \\
 (bases) & (ms) & (MiB) & (MiB) \\
 \midrule
-200  & 52    & 2.0    & 0.0 \\
-400  & 55    & 2.1    & 0.0 \\
-800  & 155   & 15.7   & 0.0 \\
-1600 & 585   & 78.8   & 0.0 \\
-3200 & 2322  & 357.6  & 0.0 \\
-6400 & 9274  & \textbf{1429.7} & \textbf{0.0} \\
+200  & 41    & 2.1    & 0.0 \\
+400  & 52    & 2.0    & 0.0 \\
+800  & 208   & 15.7   & 0.0 \\
+1600 & 840   & 78.7   & 0.0 \\
+3200 & 3443  & 357.5  & 0.0 \\
+6400 & 14354 & \textbf{1428.5} & \textbf{0.0} \\
 \bottomrule
 \end{tabular}
 
@@ -120,7 +120,7 @@ $L$ & $t_{\text{NW}}$ & $\Delta m_{\text{NW}}$ & $\Delta m_{\text{HB}}$ \\
 NW $\to$ \textbf{1.4 GiB} para 6400 bases.\\
 Hirschberg $\to$ baseline (0 MiB delta).\\
 \smallskip
-Tiempo: HB es $\sim 2.5\times$ m\'as lento.
+Tiempo: HB es $\sim 2.4\times$ m\'as lento.
 
 \column{0.5\textwidth}
 \includegraphics[width=\linewidth]{benchmark.png}
@@ -191,7 +191,7 @@ At\'un      & 20.0 & 20.0 & 20.0 & 15.2 & 16.2 & 0.0 \\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Validaci\'on contra Biopython (sustituto de BLAST)}
+\begin{frame}{Validaci\'on local: Biopython \texttt{PairwiseAligner}}
 Los 15 pares fueron re-alineados con \texttt{Bio.Align.PairwiseAligner} (NW global, mismo BLOSUM62, mismo gap lineal $-4$).
 \medskip
 
@@ -215,12 +215,35 @@ Gallina vs At\'un     & 478 & 83.8  & 478 & 83.8  \\
 $\Rightarrow$ Nuestra implementaci\'on de NW de la PC2 es \textbf{funcionalmente equivalente} a la est\'andar de Biopython para gap lineal.
 \end{frame}
 
-\begin{frame}{Dendrograma}
-\centering
-\includegraphics[width=\linewidth]{dendrogram.png}
+\begin{frame}{Comparaci\'on contra \textbf{BLAST} de NCBI}
+La consigna pide ``comparar tu algoritmo con BLAST''. Procedimiento:
+\begin{itemize}\setlength\itemsep{0.15em}
+  \item Una llamada \texttt{blastp} online por especie (\texttt{Bio.Blast.NCBIWWW.qblast}, base \texttt{nr}), filtrada por \texttt{entrez\_query} a los 5 accessions de los subjects.
+  \item Para cada par se extrae bit-score, E-value y \%identidad del mejor HSP.
+  \item Resultados cacheados en \texttt{output/blast\_cache.json} (corridas posteriores son offline).
+\end{itemize}
 
 \smallskip
-\small UPGMA (izq.) y single linkage (der.). El clade primate colapsa a distancia 0; el at\'un es outgroup.
+{\small\input{nw_vs_blast_compact.tex}}
+
+\smallskip
+\textbf{Lectura:} NW global y BLAST local concuerdan dentro de $\sim$1\% en identidad y todos los E-values son $\le 10^{-50}$. La se\~nal filogen\'etica est\'a en el marcador, no en el algoritmo.
+\end{frame}
+
+\begin{frame}{Dendrograma NW}
+\centering
+\includegraphics[width=0.95\linewidth]{dendrogram_nw.png}
+
+\smallskip
+\small UPGMA (izq.) y single linkage (der.). Clade primate colapsa a distancia 0; at\'un como outgroup.
+\end{frame}
+
+\begin{frame}{Dendrograma desde \textbf{BLAST}}
+\centering
+\includegraphics[width=0.95\linewidth]{dendrogram_blast.png}
+
+\smallskip
+\small Distancias derivadas del \%id de BLAST (no del NW). \alert{Misma topolog\'ia y misma anomal\'ia (Rat\'on, Gallina)} $\Rightarrow$ no es artefacto del algoritmo de alineamiento.
 \end{frame}
 
 \begin{frame}{\textbf{¿Coincide con el \'arbol evolutivo conocido?}}
@@ -239,7 +262,7 @@ Primates $\subset$ mam\'iferos $\subset$ amniotas $\subset$ vertebrados con mand
 \end{itemize}
 
 \smallskip
-\textbf{No es un bug del c\'odigo} (Biopython da exactamente las mismas distancias): es un problema del \emph{marcador molecular}.
+\textbf{No es un bug del c\'odigo} (Biopython da exactamente las mismas distancias \emph{y} BLAST reproduce la misma topolog\'ia): es un problema del \emph{marcador molecular}.
 \end{frame}
 
 \begin{frame}{¿Por qu\'e falla el citocromo c?}
@@ -258,12 +281,12 @@ $d = 100(1-p)$ no corrige reversiones ni sustituciones m\'ultiples. Correcciones
 \section{Cierre}
 
 \begin{frame}{Conclusiones}
-\begin{enumerate}\setlength\itemsep{0.6em}
+\begin{enumerate}\setlength\itemsep{0.5em}
   \item \textbf{Hirschberg = score \'optimo de NW con memoria $O(\min(m,n))$.}
-        Para 6400 bases: 1.4 GiB $\to$ 0 MiB adicionales, costo $\sim$2.5$\times$ en tiempo.
+        Para 6400 bases: 1.4 GiB $\to$ 0 MiB adicionales, costo $\sim 2.4\times$ en tiempo.
   \item \textbf{Filogenia con NW + BLOSUM62} reproduce el clade primate y el outgroup at\'un, pero falla en la topolog\'ia interna mam\'iferos/aves por saturaci\'on y heterogeneidad de tasa del citocromo c.
-  \item \textbf{Validaci\'on:} 15/15 pares coinciden en score y \% identidad contra \texttt{Bio.Align.PairwiseAligner}.
-  \item \textbf{Lectura central:} cambiar el \emph{algoritmo} (NW $\to$ Hirschberg) no altera la respuesta biol\'ogica; cambiar el \emph{marcador} s\'i. El algoritmo asegura optimalidad respecto a una funci\'on objetivo; la interpretaci\'on biol\'ogica depende del marcador, la matriz y el modelo de distancia.
+  \item \textbf{Doble validaci\'on:} 15/15 pares coinciden en score y \% identidad contra \texttt{Bio.Align.PairwiseAligner}; BLAST de NCBI confirma identidades equivalentes y reproduce la \emph{misma} topolog\'ia an\'omala.
+  \item \textbf{Lectura central:} cambiar el \emph{algoritmo} (NW $\to$ Hirschberg $\to$ BLAST) no altera la respuesta biol\'ogica; cambiar el \emph{marcador} s\'i. El algoritmo asegura optimalidad respecto a una funci\'on objetivo; la interpretaci\'on biol\'ogica depende del marcador, la matriz y el modelo de distancia.
 \end{enumerate}
 \end{frame}
 

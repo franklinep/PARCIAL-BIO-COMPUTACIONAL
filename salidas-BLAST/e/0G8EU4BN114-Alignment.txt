@@ -1,0 +1,35 @@
+RID: 0G8EU4BN114	
+Job Title:sp|P67881|CYC_CHICK Cytochrome c OS=Gallus...				
+Program: BLASTP 
+Query: sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=CYC PE=1 SV=2 ID: lcl|Query_7911195(amino acid) Length: 105
+Subject:sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2 ID: lcl|Query_7911197(amino acid) Length: 104
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226... 0          0                                          0          187    187   99%   1e-68 84.62  104        Query_7911197    
+
+Alignments:
+
+>sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2
+Sequence ID: Query_7911197 Length: 104
+Range 1: 1 to 104
+
+Score:187 bits(475), Expect:1e-68, 
+Method:Compositional matrix adjust., 
+Identities:88/104(85%), Positives:94/104(90%), Gaps:0/104(0%)
+
+Query  1    MGDIEKGKKIFVQKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAEGFSYTDANKNKGITW  60
+            MGD+ KGKK FVQKC+QCHTVE GGKHK GPNL GLFGRKTGQAEG+SYTDANK+KGI W
+Sbjct  1    MGDVAKGKKTFVQKCAQCHTVENGGKHKVGPNLWGLFGRKTGQAEGYSYTDANKSKGIVW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKSERVDLIAYLKDATS  104
+             E+TLMEYLENPKKYIPGTKMIFAGIKKK ER DL+AYLK ATS
+Sbjct  61   NENTLMEYLENPKKYIPGTKMIFAGIKKKGERQDLVAYLKSATS  104
+
+
+
+
+		
+
+

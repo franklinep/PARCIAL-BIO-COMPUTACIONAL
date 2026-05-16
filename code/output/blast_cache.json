@@ -1,0 +1,167 @@
+[
+  {
+    "species_a": "Chimpance",
+    "species_b": "Atun",
+    "accession_b": "P00025",
+    "bit_score": 177.0,
+    "e_value": 1e-64,
+    "identity_pct": 80.76923076923077,
+    "align_length": 104,
+    "query_coverage_pct": 99.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Chimpance",
+    "species_b": "Gallina",
+    "accession_b": "P67881",
+    "bit_score": 194.0,
+    "e_value": 3e-71,
+    "identity_pct": 87.61904761904762,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Chimpance",
+    "species_b": "Gorila",
+    "accession_b": "G4XXM2",
+    "bit_score": 216.0,
+    "e_value": 8e-80,
+    "identity_pct": 100.0,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Chimpance",
+    "species_b": "Raton",
+    "accession_b": "P62897",
+    "bit_score": 199.0,
+    "e_value": 2e-73,
+    "identity_pct": 91.42857142857143,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Gallina",
+    "species_b": "Atun",
+    "accession_b": "P00025",
+    "bit_score": 187.0,
+    "e_value": 1e-68,
+    "identity_pct": 84.61538461538461,
+    "align_length": 104,
+    "query_coverage_pct": 99.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Gorila",
+    "species_b": "Atun",
+    "accession_b": "P00025",
+    "bit_score": 177.0,
+    "e_value": 1e-64,
+    "identity_pct": 80.76923076923077,
+    "align_length": 104,
+    "query_coverage_pct": 99.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Gorila",
+    "species_b": "Gallina",
+    "accession_b": "P67881",
+    "bit_score": 194.0,
+    "e_value": 3e-71,
+    "identity_pct": 87.61904761904762,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Gorila",
+    "species_b": "Raton",
+    "accession_b": "P62897",
+    "bit_score": 199.0,
+    "e_value": 2e-73,
+    "identity_pct": 91.42857142857143,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Humano",
+    "species_b": "Atun",
+    "accession_b": "P00025",
+    "bit_score": 177.0,
+    "e_value": 1e-64,
+    "identity_pct": 80.76923076923077,
+    "align_length": 104,
+    "query_coverage_pct": 99.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Humano",
+    "species_b": "Chimpance",
+    "accession_b": "P99998",
+    "bit_score": 216.0,
+    "e_value": 8e-80,
+    "identity_pct": 100.0,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Humano",
+    "species_b": "Gallina",
+    "accession_b": "P67881",
+    "bit_score": 194.0,
+    "e_value": 3e-71,
+    "identity_pct": 87.61904761904762,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Humano",
+    "species_b": "Gorila",
+    "accession_b": "G4XXM2",
+    "bit_score": 216.0,
+    "e_value": 8e-80,
+    "identity_pct": 100.0,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Humano",
+    "species_b": "Raton",
+    "accession_b": "P62897",
+    "bit_score": 199.0,
+    "e_value": 2e-73,
+    "identity_pct": 91.42857142857143,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Raton",
+    "species_b": "Atun",
+    "accession_b": "P00025",
+    "bit_score": 187.0,
+    "e_value": 2e-68,
+    "identity_pct": 85.57692307692308,
+    "align_length": 104,
+    "query_coverage_pct": 99.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  },
+  {
+    "species_a": "Raton",
+    "species_b": "Gallina",
+    "accession_b": "P67881",
+    "bit_score": 204.0,
+    "e_value": 5e-75,
+    "identity_pct": 92.38095238095238,
+    "align_length": 105,
+    "query_coverage_pct": 100.0,
+    "fetched_at": "2026-05-16T13:15:59+00:00"
+  }
+]

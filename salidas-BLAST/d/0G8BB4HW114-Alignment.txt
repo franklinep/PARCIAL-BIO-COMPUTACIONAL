@@ -1,0 +1,35 @@
+RID: 0G8BB4HW114	
+Job Title:sp|P62897|CYC_MOUSE Cytochrome c, somatic...				
+Program: BLASTP 
+Query: sp|P62897|CYC_MOUSE Cytochrome c, somatic OS=Mus musculus OX=10090 GN=Cycs PE=1 SV=2 ID: lcl|Query_7762593(amino acid) Length: 105
+Subject:sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2 ID: lcl|Query_7762595(amino acid) Length: 104
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226... 0          0                                          0          187    187   99%   2e-68 85.58  104        Query_7762595    
+
+Alignments:
+
+>sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2
+Sequence ID: Query_7762595 Length: 104
+Range 1: 1 to 104
+
+Score:187 bits(474), Expect:2e-68, 
+Method:Compositional matrix adjust., 
+Identities:89/104(86%), Positives:94/104(90%), Gaps:0/104(0%)
+
+Query  1    MGDVEKGKKIFVQKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAAGFSYTDANKNKGITW  60
+            MGDV KGKK FVQKCAQCHTVE GGKHK GPNL GLFGRKTGQA G+SYTDANK+KGI W
+Sbjct  1    MGDVAKGKKTFVQKCAQCHTVENGGKHKVGPNLWGLFGRKTGQAEGYSYTDANKSKGIVW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKGERADLIAYLKKATN  104
+             E+TLMEYLENPKKYIPGTKMIFAGIKKKGER DL+AYLK AT+
+Sbjct  61   NENTLMEYLENPKKYIPGTKMIFAGIKKKGERQDLVAYLKSATS  104
+
+
+
+
+		
+
+

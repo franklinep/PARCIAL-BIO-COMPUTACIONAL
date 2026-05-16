@@ -1,0 +1,35 @@
+RID: 0G7ZDD8W114	
+Job Title:tr|G4XXM2|G4XXM2_9PRIM Cytochrome c OS=Gorilla...				
+Program: BLASTP 
+Query: tr|G4XXM2|G4XXM2_9PRIM Cytochrome c OS=Gorilla gorilla OX=9593 GN=CYCS PE=3 SV=1 ID: lcl|Query_6161531(amino acid) Length: 105
+Subject:sp|P62897|CYC_MOUSE Cytochrome c, somatic OS=Mus musculus OX=10090 GN=Cycs PE=1 SV=2 ID: lcl|Query_6161533(amino acid) Length: 105
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P62897|CYC_MOUSE Cytochrome c, somatic OS=Mus musculus...      0          0                                          0          199    199   100%  2e-73 91.43  105        Query_6161533    
+
+Alignments:
+
+>sp|P62897|CYC_MOUSE Cytochrome c, somatic OS=Mus musculus OX=10090 GN=Cycs PE=1 SV=2
+Sequence ID: Query_6161533 Length: 105
+Range 1: 1 to 105
+
+Score:199 bits(507), Expect:2e-73, 
+Method:Compositional matrix adjust., 
+Identities:96/105(91%), Positives:99/105(94%), Gaps:0/105(0%)
+
+Query  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+            MGDVEKGKKIF+ KC+QCHTVEKGGKHKTGPNLHGLFGRKTGQA G+SYT ANKNKGI W
+Sbjct  1    MGDVEKGKKIFVQKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAAGFSYTDANKNKGITW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATNE  105
+            GEDTLMEYLENPKKYIPGTKMIF GIKKK ERADLIAYLKKATNE
+Sbjct  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKGERADLIAYLKKATNE  105
+
+
+
+
+		
+
+

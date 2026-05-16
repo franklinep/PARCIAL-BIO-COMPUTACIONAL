@@ -1,0 +1,35 @@
+RID: 0G7RC3YM114	
+Job Title:sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes...				
+Program: BLASTP 
+Query: sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes OX=9598 GN=CYCS PE=1 SV=2 ID: lcl|Query_6730401(amino acid) Length: 105
+Subject:sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2 ID: lcl|Query_6730403(amino acid) Length: 104
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226... 0          0                                          0          177    177   99%   1e-64 80.77  104        Query_6730403    
+
+Alignments:
+
+>sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2
+Sequence ID: Query_6730403 Length: 104
+Range 1: 1 to 104
+
+Score:177 bits(450), Expect:1e-64, 
+Method:Compositional matrix adjust., 
+Identities:84/104(81%), Positives:91/104(87%), Gaps:0/104(0%)
+
+Query  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+            MGDV KGKK F+ KC+QCHTVE GGKHK GPNL GLFGRKTGQA GYSYT ANK+KGI+W
+Sbjct  1    MGDVAKGKKTFVQKCAQCHTVENGGKHKVGPNLWGLFGRKTGQAEGYSYTDANKSKGIVW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATN  104
+             E+TLMEYLENPKKYIPGTKMIF GIKKK ER DL+AYLK AT+
+Sbjct  61   NENTLMEYLENPKKYIPGTKMIFAGIKKKGERQDLVAYLKSATS  104
+
+
+
+
+		
+
+

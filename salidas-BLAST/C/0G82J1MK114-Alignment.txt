@@ -1,0 +1,35 @@
+RID: 0G82J1MK114	
+Job Title:tr|G4XXM2|G4XXM2_9PRIM Cytochrome c OS=Gorilla...				
+Program: BLASTP 
+Query: tr|G4XXM2|G4XXM2_9PRIM Cytochrome c OS=Gorilla gorilla OX=9593 GN=CYCS PE=3 SV=1 ID: lcl|Query_6262093(amino acid) Length: 105
+Subject:sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2 ID: lcl|Query_6262095(amino acid) Length: 104
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226... 0          0                                          0          177    177   99%   1e-64 80.77  104        Query_6262095    
+
+Alignments:
+
+>sp|P00025|CYC_KATPE Cytochrome c OS=Katsuwonus pelamis OX=8226 GN=cyc PE=1 SV=2
+Sequence ID: Query_6262095 Length: 104
+Range 1: 1 to 104
+
+Score:177 bits(450), Expect:1e-64, 
+Method:Compositional matrix adjust., 
+Identities:84/104(81%), Positives:91/104(87%), Gaps:0/104(0%)
+
+Query  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+            MGDV KGKK F+ KC+QCHTVE GGKHK GPNL GLFGRKTGQA GYSYT ANK+KGI+W
+Sbjct  1    MGDVAKGKKTFVQKCAQCHTVENGGKHKVGPNLWGLFGRKTGQAEGYSYTDANKSKGIVW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATN  104
+             E+TLMEYLENPKKYIPGTKMIF GIKKK ER DL+AYLK AT+
+Sbjct  61   NENTLMEYLENPKKYIPGTKMIFAGIKKKGERQDLVAYLKSATS  104
+
+
+
+
+		
+
+

@@ -1,0 +1,35 @@
+RID: 0G89JWK2114	
+Job Title:sp|P62897|CYC_MOUSE Cytochrome c, somatic...				
+Program: BLASTP 
+Query: sp|P62897|CYC_MOUSE Cytochrome c, somatic OS=Mus musculus OX=10090 GN=Cycs PE=1 SV=2 ID: lcl|Query_7684849(amino acid) Length: 105
+Subject:sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=CYC PE=1 SV=2 ID: lcl|Query_7684851(amino acid) Length: 105
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=C... 0          0                                          0          204    204   100%  5e-75 92.38  105        Query_7684851    
+
+Alignments:
+
+>sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=CYC PE=1 SV=2
+Sequence ID: Query_7684851 Length: 105
+Range 1: 1 to 105
+
+Score:204 bits(518), Expect:5e-75, 
+Method:Compositional matrix adjust., 
+Identities:97/105(92%), Positives:101/105(96%), Gaps:0/105(0%)
+
+Query  1    MGDVEKGKKIFVQKCAQCHTVEKGGKHKTGPNLHGLFGRKTGQAAGFSYTDANKNKGITW  60
+            MGD+EKGKKIFVQKC+QCHTVEKGGKHKTGPNLHGLFGRKTGQA GFSYTDANKNKGITW
+Sbjct  1    MGDIEKGKKIFVQKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAEGFSYTDANKNKGITW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKGERADLIAYLKKATNE  105
+            GEDTLMEYLENPKKYIPGTKMIFAGIKKK ER DLIAYLK AT++
+Sbjct  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKSERVDLIAYLKDATSK  105
+
+
+
+
+		
+
+

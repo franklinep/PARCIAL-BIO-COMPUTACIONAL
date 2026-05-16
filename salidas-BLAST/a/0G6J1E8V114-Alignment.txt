@@ -1,0 +1,35 @@
+RID: 0G6J1E8V114	
+Job Title: sp|P99999|CYC_HUMAN Cytochrome c OS=Homo 				
+Program: BLASTP 
+Query: sp|P99999|CYC_HUMAN Cytochrome c OS=Homo sapiens OX=9606 GN=CYCS PE=1 SV=2 ID: lcl|Query_4663815(amino acid) Length: 105
+Subject:sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes OX=9598 GN=CYCS PE=1 SV=2 ID: lcl|Query_4663817(amino acid) Length: 105
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes OX=9598...    0          0                                          0          216    216   100%  8e-80 100.00 105        Query_4663817    
+
+Alignments:
+
+>sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes OX=9598 GN=CYCS PE=1 SV=2
+Sequence ID: Query_4663817 Length: 105
+Range 1: 1 to 105
+
+Score:216 bits(549), Expect:8e-80, 
+Method:Compositional matrix adjust., 
+Identities:105/105(100%), Positives:105/105(100%), Gaps:0/105(0%)
+
+Query  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+            MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW
+Sbjct  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATNE  105
+            GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATNE
+Sbjct  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATNE  105
+
+
+
+
+		
+
+

@@ -1,0 +1,35 @@
+RID: 0G7PRTUP114	
+Job Title:sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes...				
+Program: BLASTP 
+Query: sp|P99998|CYC_PANTR Cytochrome c OS=Pan troglodytes OX=9598 GN=CYCS PE=1 SV=2 ID: lcl|Query_6694691(amino acid) Length: 105
+Subject:sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=CYC PE=1 SV=2 ID: lcl|Query_6694693(amino acid) Length: 105
+	
+Clusters producing significant alignments:
+                                                                  #          #          Scientific      Cluster                    Max    Total Query   E   Per.   Acc.                        
+Cluster Rep.                                                      Mem.       Taxa       Name            Ancestor        Taxid      Score  Score cover Value Ident  Len        Accession        
+sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=C... 0          0                                          0          194    194   100%  3e-71 87.62  105        Query_6694693    
+
+Alignments:
+
+>sp|P67881|CYC_CHICK Cytochrome c OS=Gallus gallus OX=9031 GN=CYC PE=1 SV=2
+Sequence ID: Query_6694693 Length: 105
+Range 1: 1 to 105
+
+Score:194 bits(493), Expect:3e-71, 
+Method:Compositional matrix adjust., 
+Identities:92/105(88%), Positives:97/105(92%), Gaps:0/105(0%)
+
+Query  1    MGDVEKGKKIFIMKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAPGYSYTAANKNKGIIW  60
+            MGD+EKGKKIF+ KCSQCHTVEKGGKHKTGPNLHGLFGRKTGQA G+SYT ANKNKGI W
+Sbjct  1    MGDIEKGKKIFVQKCSQCHTVEKGGKHKTGPNLHGLFGRKTGQAEGFSYTDANKNKGITW  60
+
+Query  61   GEDTLMEYLENPKKYIPGTKMIFVGIKKKEERADLIAYLKKATNE  105
+            GEDTLMEYLENPKKYIPGTKMIF GIKKK ER DLIAYLK AT++
+Sbjct  61   GEDTLMEYLENPKKYIPGTKMIFAGIKKKSERVDLIAYLKDATSK  105
+
+
+
+
+		
+
+

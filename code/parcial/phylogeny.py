@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 
@@ -54,15 +54,29 @@ class DistanceMatrixBuilder:
             )
         return self._pair_results[key]
 
-    def build(self, species: List[Species]) -> Tuple[np.ndarray, np.ndarray]:
-        """Devuelve (matriz_distancias, matriz_identidades) NxN."""
+    def build(
+        self,
+        species: List[Species],
+        external_identities: Optional[Dict[Tuple[str, str], float]] = None,
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """Devuelve (matriz_distancias, matriz_identidades) NxN.
+
+        Si `external_identities` esta dado, para cada par (label_i, label_j)
+        ordenado alfabeticamente que aparezca en el dict se usa ese valor
+        (porcentaje 0-100) en vez de calcular NW. Los pares ausentes caen
+        de vuelta al alineamiento NW propio. Esto permite construir una
+        segunda matriz con identidades de BLAST sin duplicar logica."""
         n = len(species)
         D = np.zeros((n, n))
         I = np.zeros((n, n))
         for i in range(n):
             for j in range(i + 1, n):
-                result = self.align_pair(species[i], species[j])
-                identity = result.identity
+                key = tuple(sorted((species[i].label, species[j].label)))
+                if external_identities is not None and key in external_identities:
+                    identity = external_identities[key]
+                else:
+                    result = self.align_pair(species[i], species[j])
+                    identity = result.identity
                 D[i, j] = D[j, i] = 100.0 - identity
                 I[i, j] = I[j, i] = identity
             I[i, i] = 100.0
