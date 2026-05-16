@@ -13,6 +13,8 @@ que sigan siendo datos *reales* en su base pero con longitudes mayores.
 from __future__ import annotations
 import time
 import random
+import tracemalloc
+import gc
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
@@ -28,8 +30,9 @@ class BenchmarkPoint:
     length: int          # longitud aproximada de las secuencias
     algorithm: str       # "NW" o "Hirschberg"
     time_s: float
-    peak_mem_mib: float  # MiB pico durante la ejecucion (incluye baseline)
-    delta_mem_mib: float # MiB adicionales respecto al baseline
+    peak_mem_mib: float      # RSS pico durante la ejecucion (incluye baseline)
+    delta_mem_mib: float     # RSS adicional respecto al baseline
+    trace_peak_mib: float = float("nan")  # pico Python medido con tracemalloc
 
 
 def build_pair(base_human: str, base_mouse: str, target_len: int, seed: int = 0) -> tuple[str, str]:
@@ -49,8 +52,8 @@ def build_pair(base_human: str, base_mouse: str, target_len: int, seed: int = 0)
     return s1, "".join(s2)
 
 
-def time_and_memory(fn) -> tuple[float, float, float]:
-    """Mide tiempo y memoria pico de una funcion sin argumentos."""
+def time_and_memory(fn, trace_python_memory: bool = False) -> tuple[float, float, float, float]:
+    """Mide tiempo, RSS del proceso y memoria Python de una funcion."""
     baseline = memory_usage(-1, interval=0.05, timeout=0.1, max_usage=True)
     t0 = time.perf_counter()
     mem_trace = memory_usage(
@@ -61,7 +64,26 @@ def time_and_memory(fn) -> tuple[float, float, float]:
     )
     t1 = time.perf_counter()
     peak = mem_trace if isinstance(mem_trace, float) else max(mem_trace)
-    return (t1 - t0), peak, peak - baseline
+
+    if trace_python_memory:
+        # Se mide en una segunda corrida para no capturar asignaciones internas
+        # de memory_profiler dentro del pico de tracemalloc.
+        gc.collect()
+        tracemalloc.start()
+        fn()
+        _, trace_peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        trace_peak_mib = trace_peak / (1024 * 1024)
+    else:
+        trace_peak_mib = float("nan")
+
+    return (t1 - t0), peak, peak - baseline, trace_peak_mib
+
+
+def _trace_label(trace_peak_mib: float) -> str:
+    if trace_peak_mib != trace_peak_mib:
+        return "py_peak=     n/a"
+    return f"py_peak={trace_peak_mib:8.4f} MiB"
 
 
 def run_benchmark(
@@ -69,6 +91,7 @@ def run_benchmark(
     base_mouse: str,
     lengths: List[int],
     gap: int = -1,
+    trace_python_memory: bool = False,
 ) -> List[BenchmarkPoint]:
     matrix = SimpleMatrix()
     points: List[BenchmarkPoint] = []
@@ -81,17 +104,33 @@ def run_benchmark(
 
         # NW clasico (puede explotar para L grande)
         try:
-            t, peak, delta = time_and_memory(lambda: nw.align(s1, s2))
-            print(f"    NW          t={t*1000:8.1f} ms   peak={peak:7.1f} MiB   d={delta:6.1f} MiB")
-            points.append(BenchmarkPoint(L, "NW", t, peak, delta))
+            t, peak, delta, trace_peak = time_and_memory(
+                lambda: nw.align(s1, s2),
+                trace_python_memory=trace_python_memory,
+            )
+            print(
+                f"    NW          t={t*1000:8.1f} ms   "
+                f"rss_d={delta:8.3f} MiB   {_trace_label(trace_peak)}"
+            )
+            points.append(BenchmarkPoint(L, "NW", t, peak, delta, trace_peak))
         except MemoryError:
             print(f"    NW          MemoryError (matriz demasiado grande)")
-            points.append(BenchmarkPoint(L, "NW", float("inf"), float("inf"), float("inf")))
+            points.append(
+                BenchmarkPoint(
+                    L, "NW", float("inf"), float("inf"), float("inf"), float("inf")
+                )
+            )
 
         # Hirschberg
-        t, peak, delta = time_and_memory(lambda: hb.align(s1, s2))
-        print(f"    Hirschberg  t={t*1000:8.1f} ms   peak={peak:7.1f} MiB   d={delta:6.1f} MiB")
-        points.append(BenchmarkPoint(L, "Hirschberg", t, peak, delta))
+        t, peak, delta, trace_peak = time_and_memory(
+            lambda: hb.align(s1, s2),
+            trace_python_memory=trace_python_memory,
+        )
+        print(
+            f"    Hirschberg  t={t*1000:8.1f} ms   "
+            f"rss_d={delta:8.3f} MiB   {_trace_label(trace_peak)}"
+        )
+        points.append(BenchmarkPoint(L, "Hirschberg", t, peak, delta, trace_peak))
 
     return points
 
@@ -99,9 +138,13 @@ def run_benchmark(
 def points_to_csv(points: List[BenchmarkPoint], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w") as f:
-        f.write("length,algorithm,time_s,peak_mem_mib,delta_mem_mib\n")
+        f.write(
+            "length,algorithm,time_s,peak_mem_mib,delta_mem_mib,"
+            "trace_peak_mib\n"
+        )
         for p in points:
             f.write(
                 f"{p.length},{p.algorithm},{p.time_s:.6f},"
-                f"{p.peak_mem_mib:.3f},{p.delta_mem_mib:.3f}\n"
+                f"{p.peak_mem_mib:.3f},{p.delta_mem_mib:.3f},"
+                f"{p.trace_peak_mib:.6f}\n"
             )

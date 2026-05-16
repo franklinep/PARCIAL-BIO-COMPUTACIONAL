@@ -64,6 +64,38 @@ class NeedlemanWunsch(Aligner):
     def algorithm_name(self) -> str:
         return "NW"
 
+    def compute_score_matrix(self, seq1: str, seq2: str) -> Matrix:
+        """
+        Construye y devuelve la matriz DP completa de Needleman-Wunsch.
+
+        Es util para depurar ejemplos pequenos. Para secuencias grandes,
+        esta matriz consume O(m*n) memoria.
+        """
+        score_matrix = self._initialize(len(seq1), len(seq2))
+        self._fill(score_matrix, seq1, seq2)
+        return score_matrix
+
+    def format_score_matrix(
+        self,
+        seq1: str,
+        seq2: str,
+        matrix: Matrix | None = None,
+    ) -> str:
+        """Devuelve la matriz DP con etiquetas de filas/columnas."""
+        matrix = matrix if matrix is not None else self.compute_score_matrix(seq1, seq2)
+        row_labels = ["-"] + list(seq1)
+        col_labels = ["-"] + list(seq2)
+        width = max(
+            4,
+            max(len(str(value)) for row in matrix for value in row) + 1,
+            max(len(label) for label in row_labels + col_labels) + 1,
+        )
+
+        lines = ["".rjust(width) + "".join(label.rjust(width) for label in col_labels)]
+        for label, row in zip(row_labels, matrix):
+            lines.append(label.rjust(width) + "".join(str(value).rjust(width) for value in row))
+        return "\n".join(lines)
+
     def _initialize(self, m: int, n: int) -> Matrix:
         matrix = [[0] * (n + 1) for _ in range(m + 1)]
         for i in range(m + 1):

@@ -1,17 +1,17 @@
 \begin{table}[h]
 \centering
 \small
-\caption{Comparacion de tiempo y memoria entre NW clasico y Hirschberg para longitudes crecientes. Memoria reportada es el delta sobre el baseline del proceso Python (medido con memory\_profiler).}
+\caption{Comparacion de tiempo y memoria entre NW clasico y Hirschberg para longitudes crecientes. Memoria reportada es el delta RSS sobre el baseline del proceso Python (medido con memory\_profiler); valores cercanos a cero pueden quedar por debajo de la resolucion de muestreo.}
 \begin{tabular}{rrrrr}
 \toprule
 L (bases) & $t_{\text{NW}}$ (ms) & $t_{\text{HB}}$ (ms) & $\Delta m_{\text{NW}}$ (MiB) & $\Delta m_{\text{HB}}$ (MiB) \\
 \midrule
-200 & 52.0 & 67.5 & 2.01 & 0.00 \\
-400 & 55.0 & 99.0 & 2.07 & 0.00 \\
-800 & 154.7 & 324.7 & 15.73 & 0.00 \\
-1600 & 584.5 & 1383.2 & 78.79 & 0.00 \\
-3200 & 2321.8 & 5621.4 & 357.57 & 0.00 \\
-6400 & 9274.0 & 23658.4 & 1429.65 & 0.00 \\
+200 & 40.9 & 65.9 & 2.090 & 0.004 \\
+400 & 52.1 & 116.0 & 2.023 & 0.000 \\
+800 & 208.3 & 463.3 & 15.719 & 0.000 \\
+1600 & 840.1 & 1933.2 & 78.742 & 0.000 \\
+3200 & 3442.9 & 8193.6 & 357.508 & 0.000 \\
+6400 & 14354.4 & 34491.0 & 1428.496 & 0.000 \\
 \bottomrule
 \end{tabular}
 \end{table}

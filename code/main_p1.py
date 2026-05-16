@@ -99,8 +99,8 @@ def main() -> None:
     axes[1].plot([p.length for p in hb_pts], [p.delta_mem_mib for p in hb_pts],
                  "s-", label="Hirschberg O(min)", color="C1")
     axes[1].set_xlabel("Longitud de las secuencias (bases)")
-    axes[1].set_ylabel("Memoria adicional (MiB)")
-    axes[1].set_title("Uso de memoria pico")
+    axes[1].set_ylabel("Memoria adicional RSS (MiB)")
+    axes[1].set_title("Uso de memoria pico del proceso")
     axes[1].set_xscale("log")
     axes[1].grid(True, which="both", alpha=0.3)
     axes[1].legend()
@@ -124,8 +124,9 @@ def main() -> None:
         r"\centering",
         r"\small",
         r"\caption{Comparacion de tiempo y memoria entre NW clasico y Hirschberg "
-        r"para longitudes crecientes. Memoria reportada es el delta sobre el "
-        r"baseline del proceso Python (medido con memory\_profiler).}",
+        r"para longitudes crecientes. Memoria reportada es el delta RSS sobre el "
+        r"baseline del proceso Python (medido con memory\_profiler); valores "
+        r"cercanos a cero pueden quedar por debajo de la resolucion de muestreo.}",
         r"\begin{tabular}{rrrrr}",
         r"\toprule",
         r"L (bases) & $t_{\text{NW}}$ (ms) & $t_{\text{HB}}$ (ms) "
@@ -135,7 +136,7 @@ def main() -> None:
     for L, nw_p, hb_p in rows:
         tex_lines.append(
             f"{L} & {nw_p.time_s*1000:.1f} & {hb_p.time_s*1000:.1f} "
-            f"& {nw_p.delta_mem_mib:.2f} & {hb_p.delta_mem_mib:.2f} \\\\"
+            f"& {nw_p.delta_mem_mib:.3f} & {hb_p.delta_mem_mib:.3f} \\\\"
         )
     tex_lines.extend([r"\bottomrule", r"\end{tabular}", r"\end{table}"])
     (OUTPUT / "benchmark.tex").write_text("\n".join(tex_lines))
